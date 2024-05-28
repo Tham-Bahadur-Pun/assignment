@@ -45,10 +45,10 @@ export default function Index() {
 
   const [dataSets, setDataSets] = useState<number[]>([]);
 
-  const fetchData = async (symbol: string) => {
+  const fetchData = async () => {
     try {
       const response = await axios.get(
-        `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${symbol}&apikey=demo`
+        `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${company}&apikey=demo`
       );
 
       // Get Only Weekly Adjusted Time Series data
@@ -90,7 +90,7 @@ export default function Index() {
       visible: false,
       value: 0,
     })
-    fetchData(company);
+    fetchData();
   }, [company, filter]);
 
   const data = {
